@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gh-token
+  namespace: capi-kubeadm-control-plane-system
+type: Opaque
+stringData:
+  github-token: "{{ .Values.clusterapi.ghtoken }}"

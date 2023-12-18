@@ -1,0 +1,24 @@
+clusterapi:
+  ghtoken: "FILLME"
+  core:
+    version: "v1.6.0"
+  infrastructure:
+    hetzner:
+      version: "v1.0.0-beta.27"
+  addon:
+    helm:
+      version: "v0.1.1-alpha.0"
+  bootstrap:
+    k3s:
+      version: "v0.1.9"
+    microk8s:
+      version: "v0.6.2"
+    talos:
+      version: "v0.6.3"
+  controlplane:
+    k3s:
+      version: "v0.1.9"
+    microk8s:
+      version: "v0.6.2"
+    talos:
+      version: "v0.5.4"

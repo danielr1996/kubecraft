@@ -1,0 +1,10 @@
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: BootstrapProvider
+metadata:
+  name: microk8s
+  namespace: capi-microk8s-bootstrap-system
+spec:
+  configSecret:
+    name: gh-token
+  fetchConfig:
+    url: "https://github.com/canonical/cluster-api-bootstrap-provider-microk8s/releases/{{ .Values.clusterapi.bootstrap.microk8s.version }}/bootstrap-components.yaml"

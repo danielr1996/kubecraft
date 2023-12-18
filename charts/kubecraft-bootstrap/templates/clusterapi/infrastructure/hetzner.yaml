@@ -1,0 +1,9 @@
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: InfrastructureProvider
+metadata:
+  name: hetzner
+  namespace: caph-system
+spec:
+  version: {{ .Values.clusterapi.infrastructure.hetzner.version }}
+  configSecret:
+    name: gh-token

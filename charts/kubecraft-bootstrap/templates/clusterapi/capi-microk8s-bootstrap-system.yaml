@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: capi-microk8s-bootstrap-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gh-token
+  namespace: capi-microk8s-bootstrap-system
+type: Opaque
+stringData:
+  github-token: "{{ .Values.clusterapi.ghtoken }}"
