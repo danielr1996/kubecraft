@@ -5,5 +5,3 @@ metadata:
   namespace: capi-system
 spec:
   version: {{ .Values.clusterapi.core.version | quote }}
-  configSecret:
-    name: gh-token
