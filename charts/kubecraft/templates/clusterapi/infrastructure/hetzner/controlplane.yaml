@@ -1,0 +1,24 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: {{ include "kubecraft.fullname" . }}-cp-cax11
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: control-plane
+      type: cax11
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudRemediationTemplate
+metadata:
+  name: {{ include "kubecraft.fullname" . }}-cp
+  labels:
+    {{- include "kubecraft.labels" . | nindent 4 }}
+spec:
+  template:
+    spec:
+      strategy:
+        retryLimit: 1
+        timeout: 180s
+        type: Reboot

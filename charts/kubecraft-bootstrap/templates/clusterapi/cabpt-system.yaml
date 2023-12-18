@@ -1,13 +1,13 @@
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: cabpt-system
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: gh-token
-  namespace: cabpt-system
-type: Opaque
-stringData:
-  github-token: "{{ .Values.clusterapi.ghtoken }}"
+{{/*kind: Namespace*/}}
+{{/*apiVersion: v1*/}}
+{{/*metadata:*/}}
+{{/*  name: cabpt-system*/}}
+{{/*---*/}}
+{{/*apiVersion: v1*/}}
+{{/*kind: Secret*/}}
+{{/*metadata:*/}}
+{{/*  name: gh-token*/}}
+{{/*  namespace: cabpt-system*/}}
+{{/*type: Opaque*/}}
+{{/*stringData:*/}}
+{{/*  github-token: "{{ .Values.clusterapi.ghtoken }}"*/}}

@@ -1,0 +1,27 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HetznerCluster
+metadata:
+  name: {{ include "kubecraft.fullname" . }}
+  labels:
+    {{- include "kubecraft.labels" . | nindent 4 }}
+spec:
+  controlPlaneEndpoint:
+    host: ""
+    port: 443
+  controlPlaneLoadBalancer:
+    region: {{ .Values.clusterapi.infrastructure.hetzner.region }}
+  controlPlaneRegions:
+    - {{ .Values.clusterapi.infrastructure.hetzner.region }}
+  hcloudNetwork:
+    enabled: false
+  # TODO: create multiple placementgroups per worker group
+  hcloudPlacementGroups:
+    - name: control-plane
+      type: spread
+    - name: md-0
+      type: spread
+  hetznerSecretRef:
+    key:
+      hcloudToken: token
+    name: hcloud
+  sshKeys: {}

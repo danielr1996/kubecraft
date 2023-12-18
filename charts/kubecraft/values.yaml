@@ -1,0 +1,25 @@
+clusterapi:
+  ghtoken: "FILLME"
+  infrastructure:
+    hetzner:
+      token: "FILLME"
+      region: nbg1
+  bootstrap:
+    kubeadm:
+      containerdversion: "1.7.11"
+      kubernetesversion: "1.28.4"
+  controlplane:
+    kubeadm:
+      # head -c 32 /dev/urandom | base64
+      encryptionpassphrase: "FILLME"
+      containerdversion: "1.7.11"
+      kubernetesversion: "1.28.4"
+      replicas: 3
+  addon:
+    ccmHetzner:
+      version: "v1.19.0"
+    cniCillium:
+      version: "1.14.4"
+  core:
+    replicas: 3
+    version: 1.29.0

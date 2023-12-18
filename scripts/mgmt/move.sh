@@ -1,0 +1,6 @@
+echo ""
+echo "#############"
+echo "# mgmt/move #"
+echo "#############"
+echo ""
+KUBECONFIG="$HOME/.kube/$BOOTSTRAPCLUSTER" clusterctl -n "$MGMTCLUSTER" move --to-kubeconfig="$HOME/.kube/$MGMTCLUSTER"

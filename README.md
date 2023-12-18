@@ -3,6 +3,12 @@
 # kubecraft
 crafting kubernetes with a single command
 
+# Quick start
+```shell
+cp .env.example .env
+./kubecraft.sh
+```
+
 ## Goal
 
 > This is work in progress project which will gradually evolve over time. In this section I will explain what my goal is,
