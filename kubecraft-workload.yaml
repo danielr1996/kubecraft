@@ -1,0 +1,25 @@
+clusterapi:
+  infrastructure:
+    hetzner:
+      token: "Z0zxWMAObM4RtHEzCA3Cs5kMIQZPEjBchmkAgpGzGt1yI33uOnV35lzpYyKUNsFA"
+      region: nbg1
+  bootstrap:
+    kubeadm:
+      containerdversion: "1.7.11"
+      kubernetesversion: "1.28.4"
+  controlplane:
+    kubeadm:
+      # head -c 32 /dev/urandom | base64
+      encryptionpassphrase: "UM3gykqtl4FrlT2FYaipJuUq0VITR0bu9BYrEWr4RcE="
+      containerdversion: "1.7.11"
+      kubernetesversion: "1.28.4"
+      replicas: 1
+      flavour: cax11
+  addon:
+    ccmHetzner:
+      version: "v1.19.0"
+    cniCillium:
+      version: "1.14.4"
+  core:
+    replicas: 1
+    version: 1.29.0

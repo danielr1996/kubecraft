@@ -1,4 +1,0 @@
-apiVersion: v2
-name: kubecraft-bootstrap
-description: crafting kubernetes with a single command
-version: 0.0.0

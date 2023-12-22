@@ -1,0 +1,57 @@
+apiVersion: addons.cluster.x-k8s.io/v1alpha1
+kind: HelmChartProxy
+metadata:
+  name: capi-tenant
+  labels:
+    {{- include "kubecraft.labels" $ | nindent 4 }}
+spec:
+  clusterSelector:
+    matchLabels:
+      codes.danielrichter.kubecraft/addons.capi-tenant: "true"
+  repoURL: oci://ghcr.io/danielr1996/helm-extra-deploy
+  chartName: helm-extra-deploy
+  namespace: capi-system
+  version: "1.0.0"
+  releaseName: capi-tenant
+  options:
+    install:
+      createNamespace: true
+  valuesTemplate: |
+    extraDeploy:
+        - apiVersion: operator.cluster.x-k8s.io/v1alpha2
+          kind: CoreProvider
+          metadata:
+            name: cluster-api
+            namespace: capi-system
+          spec:
+            version: {{ .Values.clusterapi.addon.capiTenant.providers.core | quote }}
+        - apiVersion: operator.cluster.x-k8s.io/v1alpha2
+          kind: ControlPlaneProvider
+          metadata:
+            name: kubeadm
+            namespace: capi-system
+          spec:
+            version: {{ .Values.clusterapi.addon.capiTenant.providers.core  | quote }}
+        - apiVersion: operator.cluster.x-k8s.io/v1alpha2
+          kind: BootstrapProvider
+          metadata:
+            name: kubeadm
+            namespace: capi-system
+          spec:
+            version: {{ .Values.clusterapi.addon.capiTenant.providers.core  | quote }}
+        - apiVersion: operator.cluster.x-k8s.io/v1alpha2
+          kind: InfrastructureProvider
+          metadata:
+            name: hetzner
+            namespace: capi-system
+          spec:
+            fetchConfig:
+              url: "https://github.com/syself/cluster-api-provider-hetzner/releases/{{ .Values.clusterapi.addon.capiTenant.providers.infrastructure.hetzner }}/infrastructure-components.yaml"
+        - apiVersion: operator.cluster.x-k8s.io/v1alpha2
+          kind: AddonProvider
+          metadata:
+            name: helm
+            namespace: capi-system
+          spec:
+            version: {{ .Values.clusterapi.addon.capiTenant.providers.addon.helm  | quote }}
+

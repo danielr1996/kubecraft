@@ -1,0 +1,19 @@
+apiVersion: addons.cluster.x-k8s.io/v1alpha1
+kind: HelmChartProxy
+metadata:
+  name: capi-operator
+spec:
+  clusterSelector:
+    matchLabels:
+      codes.danielrichter.kubecraft/addons.capi-operator: "true"
+  repoURL: https://kubernetes-sigs.github.io/cluster-api-operator
+  chartName: cluster-api-operator
+  namespace: capi-system
+  version: "{{ .Values.clusterapi.addon.capiOperator.version}}"
+  releaseName: capi-operator
+  options:
+    install:
+      createNamespace: true
+  valuesTemplate: |
+    cert-manager:
+      enabled: true

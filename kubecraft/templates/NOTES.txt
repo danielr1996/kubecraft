@@ -1,0 +1,10 @@
+🔥 Congratulations, your cluster should be up in a few minutes 🚀
+
+You can check the status of your cluster with 
+    clusterctl describe cluster -n {{ .Release.Name }} {{ .Release.Name }}
+
+As soon as the ControlPlane status is True you can grab the kubeconfig with
+    clusterctl get kubeconfig  -n {{ .Release.Name }} {{ .Release.Name }} > ~/.kube/{{ .Release.Name }}
+
+For a quick sanity check run 
+    KUBECONFIG=~/.kube/{{ .Release.Name }} kubectl get pods -A

@@ -1,5 +1,4 @@
 clusterapi:
-  ghtoken: "FILLME"
   infrastructure:
     hetzner:
       token: "FILLME"
@@ -14,12 +13,27 @@ clusterapi:
       encryptionpassphrase: "FILLME"
       containerdversion: "1.7.11"
       kubernetesversion: "1.28.4"
-      replicas: 3
+      replicas: 1
+      flavour: cax11
+  core:
+    replicas: 1
+    version: 1.29.0
   addon:
     ccmHetzner:
       version: "v1.19.0"
     cniCillium:
       version: "1.14.4"
-  core:
-    replicas: 3
-    version: 1.29.0
+    capiOperator:
+      enabled: false
+      version: "0.7.0"
+    capiTenant:
+      enabled: false
+      providers:
+        core: "1.6.0"
+        addon:
+          helm: "0.1.1-alpha.0"
+        infrastructure:
+          hetzner: "1.0.0-beta.27"
+    velero:
+      enabled: false
+

@@ -5,7 +5,9 @@ metadata:
   labels:
     codes.danielrichter.kubecraft/extensions.ccm: "true"
     codes.danielrichter.kubecraft/extensions.cni: "true"
-    codes.danielrichter.kubecraft/extensions.capi: "true"
+    codes.danielrichter.kubecraft/addons.velero: {{ .Values.clusterapi.addon.velero.enabled | quote}}
+    codes.danielrichter.kubecraft/addons.capi-operator: {{ .Values.clusterapi.addon.capiOperator.enabled | quote}}
+    codes.danielrichter.kubecraft/addons.capi-tenant: {{ .Values.clusterapi.addon.capiTenant.enabled | quote}}
     {{- include "kubecraft.labels" . | nindent 4 }}
 spec:
   clusterNetwork:
